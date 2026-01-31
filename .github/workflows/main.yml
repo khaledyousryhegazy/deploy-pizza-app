@@ -18,7 +18,8 @@ jobs:
 
       - name: Build/Push docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/pizza-app:latest /app
+          ls
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/pizza-app:latest /app/Dockerfile
           docker push ${{ secrets.DOCKER_USERNAME }}/pizza-app:latest
 
   deploy-stage:
