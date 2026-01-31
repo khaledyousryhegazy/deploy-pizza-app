@@ -1,6 +1,5 @@
 version: "3.8"
 services:
-  # app main service (the frontend)
   pizza-app:
     image: khaledyousry/pizza-app:latest
     container_name: pizza-app
