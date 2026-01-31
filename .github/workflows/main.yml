@@ -35,7 +35,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "/compose.yml,/nginx.conf"
+          source: "compose.yml,nginx.conf"
           target: "/home/ec2-user/app"
 
       - name: Execute remote ssh commands
