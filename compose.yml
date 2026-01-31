@@ -1,0 +1,33 @@
+version: 1.1.0
+name: deploy-pizza-app
+services:
+  # app main service (the frontend)
+  web-app:
+    image: khaledyousry/pizza-app:latest
+    container_name: pizza-app
+    ports:
+      - "4173:4173"
+    networks:
+      - my-app
+    volumes:
+      - dist-volume:/app/dist
+
+  # nginx service
+  nginx-app:
+    image: nginx:latest
+    container_name: nginx-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - dist-volume:/usr/share/nginx/html
+
+# networks
+networks:
+  my-app:
+    driver: bridge
+
+# volumes
+volumes:
+  dist-volume:
